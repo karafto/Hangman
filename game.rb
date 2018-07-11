@@ -3,6 +3,7 @@ require './player'
 
 class Game
   def initialize
+    puts "Welcome to HANGMAN!"
   	@dictionary = Dictionary.new
   	@board = Board.new(@dictionary.word)
   	@player = Player.new
