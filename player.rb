@@ -6,17 +6,12 @@ class Player
   end
   
   def get_input
-    puts "Enter letter:"
-    @letter = gets.strip.upcase
-    check_input
-  end
-  
-  def check_input
-    if @alphabet.include?(@letter)
-      @alphabet.delete(@letter)
-    else
+    loop do    
+      puts "Enter letter:"
+      @letter = gets.strip.upcase
+      break if @alphabet.include?(@letter)
       puts "\nTry again! Use a valid letter that has yet to be guessed."
-      get_input
     end
+    @alphabet.delete(@letter)  
   end
 end
