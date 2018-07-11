@@ -1,6 +1,6 @@
 class Board 
   def initialize(word)
-  	@guesses = 9
+  	@guesses_left = 9
     @display_incorrect = []
     @word_letters = word.split('').map { |x| x.upcase }
     @display_letters = @word_letters.map { '_' }
@@ -11,7 +11,7 @@ class Board
   end
   
   def display_guesses
-    puts "Bad guesses (only #{@guesses} left!): #{@display_incorrect.join(', ')}"
+    puts "Bad guesses (only #{@guesses_left} left!): #{@display_incorrect.join(', ')}"
   end
   
   def check_letter(letter)
@@ -19,15 +19,15 @@ class Board
       update_word(letter)
       puts "\nThat is correct!"
     else
-      @guesses -= 1
+      @guesses_left -= 1
       @display_incorrect << letter
       puts "\nWhoops, incorrect!"
     end
   end
   
   def update_word(letter)
-    correct_letters = @word_letters.each_index.select { |i| @word_letters[i] == letter }
-    correct_letters.each { |v| @display_letters[v] = letter }
+    correct_indices = @word_letters.each_index.select { |i| @word_letters[i] == letter }
+    correct_indices.each { |i| @display_letters[i] = letter }
   end
   
   def check_win
@@ -39,7 +39,7 @@ class Board
   end
   
   def check_defeat
-    if @guesses == 0
+    if @guesses_left == 0
       puts "\nOut of guesses, you lose!\n\nTHE WORD was #{@word_letters.join}."
       true
     end
