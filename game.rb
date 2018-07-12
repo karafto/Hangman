@@ -3,7 +3,7 @@ require './player'
 
 class Game
   def initialize
-    puts "Welcome to HANGMAN!"
+    puts "\nWelcome to HANGMAN!"
   	@dictionary = Dictionary.new
   	@board = Board.new(@dictionary.word)
   	@player = Player.new
@@ -28,20 +28,13 @@ class Dictionary
   attr_reader :word
   
   def initialize
-    @list = File.readlines('dictionary.txt')
+    @list = File.readlines('dictionary.txt').map { |entry| entry.strip }
     select_random
   end
   
   def select_random
-    @word = @list.sample
-    check_length
-  end
-  
-  def check_length
-    @word.strip!
-    unless @word.length > 4 && @word.length < 13
-      select_random
-    end
+    @eligible = @list.select { |word| word.length > 4 && word.length < 13 }
+    @word = @eligible.sample
   end
 end
 
