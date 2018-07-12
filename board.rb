@@ -1,6 +1,6 @@
 class Board 
   def initialize(word)
-  	@guesses_left = 9
+    @guesses_left = 9
     @display_incorrect = []
     @word_letters = word.split('').map { |x| x.upcase }
     @display_letters = @word_letters.map { '_' }
