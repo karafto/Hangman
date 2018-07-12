@@ -1,5 +1,7 @@
 # Hangman
 
+![Hangman](hangman.png)
+
 ## Installation
 
 Ensure that Ruby is installed on your machine
