@@ -4,7 +4,7 @@
 
 ## Installation
 
-Ensure that Ruby is installed on your machine
+Ensure that Ruby is installed on your machine.
 
 Clone the repo: `$ git clone https://github.com/karafto/Hangman.git`
 
