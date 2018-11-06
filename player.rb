@@ -1,17 +1,21 @@
 class Player
-  attr_reader :letter
+  attr_reader :input, :alphabet
   
-  def initialize
-    @alphabet = ('A'..'Z').to_a
+  def initialize(saved_game)
+    if saved_game
+      @alphabet = saved_game['alphabet']
+    else
+      @alphabet = ('A'..'Z').to_a
+    end
   end
   
   def get_input
-    loop do    
-      puts "Enter letter:"
-      @letter = gets.strip.upcase
-      break if @alphabet.include?(@letter)
+    loop do
+      puts "Enter letter or 'quit' to save and quit:"
+      @input = gets.strip.upcase
+      break if @alphabet.include?(@input) || @input == 'QUIT'
       puts "\nTry again! Use a valid letter that has yet to be guessed."
     end
-    @alphabet.delete(@letter)  
+    @alphabet.delete(@input)
   end
 end

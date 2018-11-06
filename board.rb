@@ -1,9 +1,18 @@
-class Board 
-  def initialize(word)
-    @guesses_left = 9
-    @display_incorrect = []
-    @word_letters = word.split('').map { |x| x.upcase }
-    @display_letters = @word_letters.map { '_' }
+class Board
+  attr_reader :guesses_left, :display_incorrect, :word_letters, :display_letters
+
+  def initialize(saved_game, new_word)
+    if saved_game
+      @guesses_left = saved_game['guesses_left']
+      @display_incorrect = saved_game['display_incorrect']
+      @word_letters = saved_game['word_letters']
+      @display_letters = saved_game['display_letters']
+    else
+      @guesses_left = 9
+      @display_incorrect = []
+      @word_letters = new_word.split('').map { |x| x.upcase }
+      @display_letters = @word_letters.map { '_' }
+    end
   end
   
   def display_board
@@ -30,15 +39,15 @@ class Board
     correct_indices.each { |i| @display_letters[i] = letter }
   end
   
-  def check_win
+  def win?
     if @display_letters == @word_letters
       display_board
-      puts 'Congratulations, you win!'
+      puts 'Congratulations, you win!!'
       true
     end
   end
   
-  def check_defeat
+  def defeat?
     if @guesses_left == 0
       puts "\nOut of guesses, you lose!\n\nTHE WORD was #{@word_letters.join}."
       true
