@@ -1,4 +1,4 @@
-class Player
+class HumanPlayer
   attr_reader :input, :alphabet
   
   def initialize(saved_game)
@@ -8,7 +8,7 @@ class Player
       @alphabet = ('A'..'Z').to_a
     end
   end
-  
+
   def get_input
     loop do
       puts "Enter letter or 'quit' to save and quit:"

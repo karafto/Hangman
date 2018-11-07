@@ -1,14 +1,14 @@
 class Board
-  attr_reader :guesses_left, :display_incorrect, :word_letters, :display_letters
+  attr_reader :guess_count, :display_incorrect, :word_letters, :display_letters
 
   def initialize(saved_game, new_word)
     if saved_game
-      @guesses_left = saved_game['guesses_left']
+      @guess_count = saved_game['guess_count']
       @display_incorrect = saved_game['display_incorrect']
       @word_letters = saved_game['word_letters']
       @display_letters = saved_game['display_letters']
     else
-      @guesses_left = 9
+      @guess_count = 9
       @display_incorrect = []
       @word_letters = new_word.split('').map { |x| x.upcase }
       @display_letters = @word_letters.map { '_' }
@@ -20,7 +20,7 @@ class Board
   end
   
   def display_guesses
-    puts "Bad guesses (only #{@guesses_left} left!): #{@display_incorrect.join(', ')}"
+    puts "Bad guesses (only #{@guess_count} left!): #{@display_incorrect.join(', ')}"
   end
   
   def check_letter(letter)
@@ -28,7 +28,7 @@ class Board
       update_word(letter)
       puts "\nThat is correct!"
     else
-      @guesses_left -= 1
+      @guess_count -= 1
       @display_incorrect << letter
       puts "\nWhoops, incorrect!"
     end
@@ -48,7 +48,7 @@ class Board
   end
   
   def defeat?
-    if @guesses_left == 0
+    if @guess_count == 0
       puts "\nOut of guesses, you lose!\n\nTHE WORD was #{@word_letters.join}."
       true
     end
