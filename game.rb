@@ -18,15 +18,15 @@ class Game
   def play_game
     until @board.win? || @board.defeat?
       @board.display_board
-      @board.display_guesses
-      @player.get_input(@board.display_letters, @board.guess_count)
-      check_save(@player.input)
-      @board.check_letter(@player.input)
+      @board.display_bad_guesses
+      @player.get_guess(@board.display_letters, @board.guess_count)
+      check_save(@player.guess)
+      @board.check_letter(@player.guess)
     end
   end
 
-  def check_save(input)
-    if input == 'QUIT'
+  def check_save(guess)
+    if guess == 'QUIT'
       temp_hash = {
         guess_count: @board.guess_count,
         display_incorrect: @board.display_incorrect,

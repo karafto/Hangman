@@ -19,7 +19,7 @@ class Board
     puts "\nTHE WORD:\n#{@display_letters.join(' ')}\n\n"
   end
   
-  def display_guesses
+  def display_bad_guesses
     puts "Bad guesses (only #{@guess_count} left!): #{@display_incorrect.join(', ')}"
   end
   

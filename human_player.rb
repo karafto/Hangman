@@ -1,5 +1,5 @@
 class HumanPlayer
-  attr_reader :input, :alphabet
+  attr_reader :guess, :alphabet
   
   def initialize(saved_game)
     if saved_game
@@ -9,13 +9,13 @@ class HumanPlayer
     end
   end
 
-  def get_input(display_letters, guess_count)
+  def get_guess(display_letters, guess_count)
     loop do
       puts "Enter letter or 'quit' to save and quit:"
-      @input = gets.strip.upcase
-      break if @alphabet.include?(@input) || @input == 'QUIT'
+      @guess = gets.strip.upcase
+      break if @alphabet.include?(@guess) || @guess == 'QUIT'
       puts "\nTry again! Use a valid letter that has yet to be guessed."
     end
-    @alphabet.delete(@input)
+    @alphabet.delete(@guess)
   end
 end

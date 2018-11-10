@@ -1,5 +1,5 @@
 class AiPlayer
-  attr_reader :input, :words_with_same_length
+  attr_reader :guess, :words_with_same_length
   
   def initialize(new_word_length, word_list)
     @words_with_same_length = word_list.select do |word|
@@ -19,25 +19,30 @@ class AiPlayer
       end
     end
 
-    @input = @letter_counts.key(@letter_counts.values.max)
+    @guess = @letter_counts.key(@letter_counts.values.max)
   end
 
-  def get_input(display_letters, guess_count)
+  def get_guess(display_letters, guess_count)
     unless guess_count == 9 && display_letters.all? { |x| x == '_' }
-      if display_letters.include?(@input)
-        @words_with_same_length.delete_if { |word| !word.include?(@input) }
+      if display_letters.include?(@guess)
+        @words_with_same_length.delete_if { |word| !word.include?(@guess) }
       else
-        @words_with_same_length.delete_if { |word| word.include?(@input) }
+        @words_with_same_length.delete_if { |word| word.include?(@guess) }
       end
 
-      @letter_counts.delete(@input)
+      @letter_counts.delete(@guess)
       find_most_included_letter(@words_with_same_length)
     end
 
     loop do
-      puts "Press return for the letter '#{@input}':"
-      @action = gets.strip
-      break if @action.empty?
+      puts "Enter letter or press return for the letter '#{@guess}':"
+      @input = gets.strip.upcase
+      break if @input.empty?
+      if @letter_counts.include?(@input)
+        @guess = @input
+        break
+      end
+      puts "\nTry again! Use a valid letter that has yet to be guessed."
     end
   end
 end

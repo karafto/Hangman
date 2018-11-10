@@ -25,11 +25,11 @@ class Hangman
 
   def choose_player
     loop do
-      puts "\nWould you like to play as a (h)uman or (n)onhuman AI? (h/n):"
+      puts "\nWould you like to play (s)olo or with (a)ssistance from the AI? (s/a):"
       @choice = gets.strip.downcase
-      break if @choice == 'h' || @choice == 'n'
+      break if @choice == 's' || @choice == 'a'
     end
-    @choice == 'h' ? @human = true : @human = false
+    @choice == 's' ? @human = true : @human = false
   end
 
   def choose_game
