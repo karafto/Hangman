@@ -23,20 +23,20 @@ class Board
     puts "Bad guesses (only #{@guess_count} left!): #{@bad_guesses.join(', ')}"
   end
   
-  def check_letter(letter)
-    if @correct_letters.include?(letter)
-      update_word(letter)
+  def check_letter(guess)
+    if @correct_letters.include?(guess)
+      update_display(guess)
       puts "\nThat is correct!"
     else
       @guess_count -= 1
-      @bad_guesses << letter
+      @bad_guesses << guess
       puts "\nWhoops, incorrect!"
     end
   end
   
-  def update_word(letter)
-    correct_indices = @correct_letters.each_index.select { |i| @correct_letters[i] == letter }
-    correct_indices.each { |i| @displayed_letters[i] = letter }
+  def update_display(guess)
+    correct_indices = @correct_letters.each_index.select { |i| @correct_letters[i] == guess }
+    correct_indices.each { |i| @displayed_letters[i] = guess }
   end
   
   def win?
