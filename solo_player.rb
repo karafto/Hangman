@@ -1,4 +1,4 @@
-class HumanPlayer
+class SoloPlayer
   attr_reader :guess, :alphabet
   
   def initialize(saved_game)

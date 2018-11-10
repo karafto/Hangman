@@ -1,6 +1,6 @@
 require './game'
 require './board'
-require './human_player'
+require './solo_player'
 require './ai_player'
 require 'json'
 
@@ -17,7 +17,7 @@ class Hangman
     loop do
       choose_player
       choose_game
-      game = Game.new(@resume, @human, @word_list)
+      game = Game.new(@resume, @solo, @word_list)
       game.play_game
       File.delete('saved_game.json') if @resume
     end
@@ -29,12 +29,12 @@ class Hangman
       @choice = gets.strip.downcase
       break if @choice == 's' || @choice == 'a'
     end
-    @choice == 's' ? @human = true : @human = false
+    @choice == 's' ? @solo = true : @solo = false
   end
 
   def choose_game
     @resume = false
-    if @human && File.exist?('saved_game.json')
+    if @solo && File.exist?('saved_game.json')
       loop do
         puts "\nWould you like to (r)esume your saved game, or start a (n)ew one? (r/n):"
         @choice = gets.strip.downcase

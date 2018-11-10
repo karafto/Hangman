@@ -22,9 +22,9 @@ class AiPlayer
     @guess = @letter_counts.key(@letter_counts.values.max)
   end
 
-  def get_guess(display_letters, guess_count)
-    unless guess_count == 9 && display_letters.all? { |x| x == '_' }
-      if display_letters.include?(@guess)
+  def get_guess(displayed_letters, guess_count)
+    unless guess_count == 9 && displayed_letters.all? { |x| x == '_' }
+      if displayed_letters.include?(@guess)
         @words_with_same_length.delete_if { |word| !word.include?(@guess) }
       else
         @words_with_same_length.delete_if { |word| word.include?(@guess) }
@@ -35,7 +35,7 @@ class AiPlayer
     end
 
     loop do
-      puts "Enter letter or press return for the letter '#{@guess}':"
+      puts "Enter letter or press return for letter '#{@guess}':"
       @input = gets.strip.upcase
       break if @input.empty?
       if @letter_counts.include?(@input)
