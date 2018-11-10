@@ -9,7 +9,7 @@ class HumanPlayer
     end
   end
 
-  def get_input
+  def get_input(display_letters, guess_count)
     loop do
       puts "Enter letter or 'quit' to save and quit:"
       @input = gets.strip.upcase

@@ -1,16 +1,17 @@
 class Game
-  def initialize(resume, human, eligible_words)
+  def initialize(resume, human, word_list)
     if resume
       saved_game = JSON.parse(File.read('saved_game.json'))
     else
-      new_word = eligible_words.sample
+      new_word = word_list.sample
     end
     @board = Board.new(saved_game, new_word)
 
     if human
       @player = HumanPlayer.new(saved_game)
     else
-      @player = AiPlayer.new(new_word.length)
+      @player = AiPlayer.new(new_word.length, word_list)
+      @player.find_most_included_letter(@player.words_with_same_length)
     end
   end
   
@@ -18,7 +19,7 @@ class Game
     until @board.win? || @board.defeat?
       @board.display_board
       @board.display_guesses
-      @player.get_input
+      @player.get_input(@board.display_letters, @board.guess_count)
       check_save(@player.input)
       @board.check_letter(@player.input)
     end

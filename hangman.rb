@@ -7,8 +7,8 @@ require 'json'
 class Hangman
   def initialize(min_word_length, max_word_length)
     puts "\nWelcome to HANGMAN!"
-    word_list = File.readlines('dictionary.txt').map { |entry| entry.strip }
-    @eligible_words = word_list.select do |word|
+    dictionary = File.readlines('dictionary.txt').map { |entry| entry.strip }
+    @word_list = dictionary.select do |word|
       word.length >= min_word_length && word.length <= max_word_length
     end
   end
@@ -17,7 +17,7 @@ class Hangman
     loop do
       choose_player
       choose_game
-      game = Game.new(@resume, @human, @eligible_words)
+      game = Game.new(@resume, @human, @word_list)
       game.play_game
       File.delete('saved_game.json') if @resume
     end
@@ -25,11 +25,10 @@ class Hangman
 
   def choose_player
     loop do
-      puts "\nWould you like to play as a (h)uman or (n)onhuman AI? You can also (q)uit. (h/n/q):"
+      puts "\nWould you like to play as a (h)uman or (n)onhuman AI? (h/n):"
       @choice = gets.strip.downcase
-      break if @choice == 'h' || @choice == 'n' || @choice == 'q'
+      break if @choice == 'h' || @choice == 'n'
     end
-    exit if @choice == 'q'
     @choice == 'h' ? @human = true : @human = false
   end
 
