@@ -29,7 +29,7 @@ class Hangman
       @choice = gets.strip.downcase
       break if @choice == 's' || @choice == 'a'
     end
-    @choice == 's' ? @solo = true : @solo = false
+    @solo = @choice == 's' ? true : false
   end
 
   def choose_game
@@ -40,7 +40,7 @@ class Hangman
         @choice = gets.strip.downcase
         break if @choice == 'r' || @choice == 'n'
       end
-      @choice == 'r' ? @resume = true : @resume = false
+      @resume = @choice == 'r' ? true : false
     end
   end
 end
