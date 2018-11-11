@@ -42,14 +42,15 @@ class Board
   def win?
     if @displayed_letters == @correct_letters
       display_board
-      puts 'Congratulations, you win!!'
+      puts '***** Congratulations, you win!! *****'
       true
     end
   end
   
   def defeat?
     if @guess_count == 0
-      puts "\nOut of guesses, you lose!\n\nTHE WORD was #{@correct_letters.join}."
+      puts "\n***** Out of guesses, you lose!! *****
+        \nTHE WORD was #{@correct_letters.join}"
       true
     end
   end

@@ -6,7 +6,7 @@ require 'json'
 
 class Hangman
   def initialize(min_word_length, max_word_length)
-    puts "\nWelcome to HANGMAN!"
+    puts "\n***** Welcome to HANGMAN! *****"
     dictionary = File.readlines('dictionary.txt').map { |entry| entry.strip }
     @word_list = dictionary.select do |word|
       word.length >= min_word_length && word.length <= max_word_length
