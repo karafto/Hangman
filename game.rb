@@ -5,7 +5,6 @@ class Game
     else
       new_word = word_list.sample
     end
-    @board = Board.new(saved_game, new_word)
 
     if solo
       @player = SoloPlayer.new(saved_game)
@@ -13,13 +12,16 @@ class Game
       @player = AiPlayer.new(new_word.length, word_list)
       @player.find_most_included_letter(@player.words_with_same_length)
     end
+
+    @board = Board.new(saved_game, new_word)
   end
   
   def play_game
     until @board.win? || @board.defeat?
       @board.display_board
       @board.display_bad_guesses
-      @player.get_guess(@board.displayed_letters, @board.guess_count)
+      @player.get_guess(@board.displayed_letters, @board.guess_count,
+        @board.correct_indices)
       check_save(@player.guess)
       @board.check_letter(@player.guess)
     end

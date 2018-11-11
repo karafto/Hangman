@@ -1,5 +1,6 @@
 class Board
-  attr_reader :guess_count, :bad_guesses, :correct_letters, :displayed_letters
+  attr_reader :guess_count, :bad_guesses, :correct_letters,
+    :displayed_letters, :correct_indices
 
   def initialize(saved_game, new_word)
     if saved_game
@@ -35,8 +36,10 @@ class Board
   end
   
   def update_display(guess)
-    correct_indices = @correct_letters.each_index.select { |i| @correct_letters[i] == guess }
-    correct_indices.each { |i| @displayed_letters[i] = guess }
+    @correct_indices = @correct_letters.each_index.select do |i|
+      @correct_letters[i] == guess
+    end
+    @correct_indices.each { |i| @displayed_letters[i] = guess }
   end
   
   def win?

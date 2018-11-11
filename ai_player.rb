@@ -6,7 +6,6 @@ class AiPlayer
       word.length == new_word_length
     end
     @words_with_same_length.each { |word| word.upcase! }
-
     alphabet = ('A'..'Z').to_a
     @letter_counts = {}
     alphabet.each { |letter| @letter_counts[letter] = 0 }
@@ -22,10 +21,12 @@ class AiPlayer
     @guess = @letter_counts.key(@letter_counts.values.max)
   end
 
-  def get_guess(displayed_letters, guess_count)
+  def get_guess(displayed_letters, guess_count, correct_indices)
     unless guess_count == 9 && displayed_letters.all? { |x| x == '_' }
       if displayed_letters.include?(@guess)
-        @words_with_same_length.delete_if { |word| !word.include?(@guess) }
+        correct_indices.each do |i|
+          @words_with_same_length.delete_if { |word| word[i] != @guess }
+        end
       else
         @words_with_same_length.delete_if { |word| word.include?(@guess) }
       end
