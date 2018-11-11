@@ -31,6 +31,7 @@ class AiPlayer
       end
 
       @letter_counts.delete(@guess)
+      @letter_counts.each { |letter, count| @letter_counts[letter] = 0 }
       find_most_included_letter(@words_with_same_length)
     end
 
