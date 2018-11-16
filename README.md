@@ -4,6 +4,8 @@ Console version of the classic word-guessing game, with supplemental AI.
 
 Play it here: https://repl.it/@karafto/hangman
 
+Try the AI! It's almost impossible to lose.
+
 ![Hangman](hangman.png)
 
 ## Installation
