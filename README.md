@@ -1,5 +1,9 @@
 # Hangman
 
+Console version of the classic word-guessing game, with supplemental AI.
+
+Play it here: https://repl.it/@karafto/hangman
+
 ![Hangman](hangman.png)
 
 ## Installation
