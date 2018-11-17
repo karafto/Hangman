@@ -15,10 +15,10 @@ Try the AI! It's almost impossible to lose.
   * The guess is the letter with the highest letter_count.
     * Case: the guess is correct. The guess will match a certain index (or indices) in mystery_word. Eliminate all words that are missing the guess at that particular index.
     * Case: the guess is incorrect. Then eliminate all words that contain the guess (regardless of index).
-  * Delete the guess from the hash of letters.
+  * Delete the guess from the hash of letters—it can't be chosen again.
   * Reset each letter_count to zero.
-* Setup phase selects a random word from a dictionary file
 * User has the option to play solo or with assistance from the AI
+* In AI mode, user can override the AI and manually input a guess. Correct or not, the AI will continue to eliminate words accordingly.
 * User can save and resume games in solo mode
 
 ## Installation
