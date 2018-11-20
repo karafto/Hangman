@@ -1,6 +1,6 @@
 # Hangman Plus AI
 
-**A console version of the classic word-guessing game, with robust AI.**
+**A console version of the classic word-guessing game, featuring a robust AI.**
 
 Play it here: https://repl.it/@karafto/hangman
 
