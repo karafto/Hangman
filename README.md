@@ -25,6 +25,6 @@ Ensure that Ruby is installed on your machine.
 
 Clone the repo: `$ git clone https://github.com/karafto/hangman-plus-ai.git`
 
-Move into the new directory: `$ cd hangman`
+Move into the new directory: `$ cd hangman-plus-ai`
 
 To play: `$ ruby hangman.rb`
