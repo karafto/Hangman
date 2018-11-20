@@ -2,7 +2,7 @@
 
 **A console version of the classic word-guessing game, featuring a robust AI.**
 
-Play it here: https://repl.it/@karafto/hangman
+Play it here (click 'run'): https://repl.it/@karafto/hang-ai
 
 Try the AI! It's almost impossible to lose.
 
