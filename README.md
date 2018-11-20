@@ -6,8 +6,6 @@ Play it here: https://repl.it/@karafto/hangman
 
 Try the AI! It's almost impossible to lose.
 
-![Hangman](hangman.png)
-
 ## Features
 
 * The AI is the centerpiece of this app. It first selects all words from the dictionary that share the length of the mystery_word. Second, it defines a hash map where each alphabetic letter points to a letter_count of zero. Then it makes recursive calls to this algorithm:
