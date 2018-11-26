@@ -5,11 +5,14 @@ require './ai_player'
 require 'json'
 
 class Hangman
-  def initialize(min_word_length, max_word_length)
+  MIN_WORD_LENGTH = 6
+  MAX_WORD_LENGTH = 12
+
+  def initialize
     puts "\n***** Welcome to HANGMAN! *****"
     dictionary = File.readlines('dictionary.txt').map { |entry| entry.strip }
     @word_list = dictionary.select do |word|
-      word.length >= min_word_length && word.length <= max_word_length
+      word.length >= MIN_WORD_LENGTH && word.length <= MAX_WORD_LENGTH
     end
   end
 
@@ -44,7 +47,5 @@ class Hangman
   end
 end
 
-MIN_WORD_LENGTH = 6
-MAX_WORD_LENGTH = 12
-hangman = Hangman.new(MIN_WORD_LENGTH, MAX_WORD_LENGTH)
+hangman = Hangman.new
 hangman.master_loop
