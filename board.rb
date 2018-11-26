@@ -1,6 +1,5 @@
 class Board
   GUESSES_AT_START = 9
-
   attr_reader :guesses_left, :bad_guesses, :correct_letters,
     :displayed_letters, :correct_indices
 
