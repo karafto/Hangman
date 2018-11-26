@@ -44,7 +44,7 @@ class Hangman
   end
 end
 
-min_word_length = 6
-max_word_length = 12
-hangman = Hangman.new(min_word_length, max_word_length)
+MIN_WORD_LENGTH = 6
+MAX_WORD_LENGTH = 12
+hangman = Hangman.new(MIN_WORD_LENGTH, MAX_WORD_LENGTH)
 hangman.master_loop
