@@ -10,7 +10,7 @@ class Game
       @player = SoloPlayer.new(saved_game)
     else
       @player = AiPlayer.new(new_word.length, word_list)
-      @player.find_most_included_letter(@player.words_with_same_length)
+      @player.find_most_included_letter(@player.potential_matches)
     end
 
     @board = Board.new(saved_game, new_word)
