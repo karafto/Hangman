@@ -20,7 +20,7 @@ class Game
     until @board.win? || @board.defeat?
       @board.display_board
       @board.display_bad_guesses
-      @player.get_guess(@board.displayed_letters, @board.guess_count,
+      @player.get_guess(@board.displayed_letters, @board.guesses_left,
         @board.correct_indices)
       check_save(@player.guess)
       @board.check_letter(@player.guess)
@@ -30,7 +30,7 @@ class Game
   def check_save(guess)
     if guess == 'QUIT'
       temp_hash = {
-        guess_count: @board.guess_count,
+        guesses_left: @board.guesses_left,
         bad_guesses: @board.bad_guesses,
         correct_letters: @board.correct_letters,
         displayed_letters: @board.displayed_letters,
