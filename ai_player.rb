@@ -37,7 +37,7 @@ class AiPlayer
     end
 
     loop do
-      puts "Enter letter or press return '#{@guess}':"
+      puts "Enter letter or press return for '#{@guess}':"
       @input = gets.strip.upcase
       break if @input.empty?
       if @letter_counts.include?(@input)
