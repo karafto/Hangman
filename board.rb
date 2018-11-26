@@ -1,4 +1,6 @@
 class Board
+  GUESSES_AT_START = 9
+
   attr_reader :guesses_left, :bad_guesses, :correct_letters,
     :displayed_letters, :correct_indices
 
@@ -9,7 +11,7 @@ class Board
       @correct_letters = saved_game['correct_letters']
       @displayed_letters = saved_game['displayed_letters']
     else
-      @guesses_left = 9
+      @guesses_left = GUESSES_AT_START
       @bad_guesses = []
       @correct_letters = new_word.split('').map { |x| x.upcase }
       @displayed_letters = @correct_letters.map { '_' }
