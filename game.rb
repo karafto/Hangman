@@ -29,7 +29,7 @@ class Game
 
   def check_save(guess)
     if guess == 'QUIT'
-      temp_hash = {
+      data = {
         guesses_left: @board.guesses_left,
         bad_guesses: @board.bad_guesses,
         correct_letters: @board.correct_letters,
@@ -37,7 +37,7 @@ class Game
         alphabet: @player.alphabet
       }
       File.open('saved_game.json','w') do |f|
-        f.write(temp_hash.to_json)
+        f.write(data.to_json)
       end
       puts "\nYour game has been saved. Bye!"
       exit
