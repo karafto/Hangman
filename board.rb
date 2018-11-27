@@ -28,11 +28,11 @@ class Board
   def check_letter(guess)
     if @correct_letters.include?(guess)
       update_display(guess)
-      puts "\nThat is correct!"
+      puts "\n'#{guess}' is correct!"
     else
       @guesses_left -= 1
       @bad_guesses << guess
-      puts "\nWhoops, incorrect!"
+      puts "\nWhoops, '#{guess}' is incorrect!"
     end
   end
   
