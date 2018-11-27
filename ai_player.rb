@@ -22,7 +22,9 @@ class AiPlayer
   end
 
   def get_guess(displayed_letters, guesses_left, correct_indices)
-    unless guesses_left == 9 && displayed_letters.all? { |x| x == '_' }
+    unless guesses_left == Board::GUESSES_AT_START &&
+      displayed_letters.all? { |x| x == '_' }
+
       if displayed_letters.include?(@guess)
         correct_indices.each do |i|
           @potential_matches.delete_if { |word| word[i] != @guess }
