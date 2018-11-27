@@ -1,7 +1,7 @@
 class Game
   def initialize(resume, solo, word_list)
     if resume
-      saved_game = JSON.parse(File.read('saved_game.json'))
+      saved_game = JSON.parse(File.read(Hangman::FILE))
     else
       new_word = word_list.sample
     end
@@ -36,7 +36,7 @@ class Game
         displayed_letters: @board.displayed_letters,
         alphabet: @player.alphabet
       }
-      File.open('saved_game.json','w') do |f|
+      File.open(Hangman::FILE,'w') do |f|
         f.write(data.to_json)
       end
       puts "\nYour game has been saved. Bye!"

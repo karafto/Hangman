@@ -7,6 +7,7 @@ require 'json'
 class Hangman
   MIN_WORD_LENGTH = 6
   MAX_WORD_LENGTH = 12
+  FILE = 'saved_data.json'
 
   def initialize
     puts "\n***** Welcome to HANGMAN! *****"
@@ -19,12 +20,12 @@ class Hangman
   def master_loop
     loop do
       solo = solo_player?
-      if solo && File.exist?('saved_game.json')
+      if solo && File.exist?(FILE)
         resume = resume_game?
       end
       game = Game.new(resume, solo, @word_list)
       game.play_game
-      File.delete('saved_game.json') if resume
+      File.delete(FILE) if resume
     end
   end
 
