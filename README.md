@@ -1,30 +1,26 @@
 # Hangman Plus AI
 
-**A console version of the classic word-guessing game, featuring a robust AI.**
+**A console version of the classic word-guessing game, featuring a nearly unbeatable AI.**
 
-Play it here (click 'run'): https://repl.it/@karafto/hang-ai
-
-Try the AI! It's almost impossible to lose.
+[Play it here!](https://repl.it/@karafto/hang-ai) (press 'run')
 
 ## Features
 
-* The AI is the centerpiece of this app. It first selects all words from the dictionary that share the length of the mystery_word. Second, it defines a hash map where each alphabetic letter points to a letter_count of zero. Then it makes recursive calls to this algorithm:
-  * In a nested loop, iterate through each word and each letter. If a word contains a letter, increment that letter's count.
-  * The letter with the highest count becomes the next guess.
-  * Case: the guess is correct. The guess will match a certain index (or multiple indices) in mystery_word. So, eliminate all words that are missing the guess at that particular index.
-  * Case: the guess is incorrect. Then eliminate all words that contain the guess (regardless of index).
-  * Delete the guess from the hash of letters—it can't be chosen again.
-  * Reset each letter_count to zero.
-* User has the option to play solo or with assistance from the AI.
-* In AI mode, user can override the AI and manually input a guess. Correct or not, the AI will continue to eliminate words accordingly.
-* User can save and resume games in solo mode.
+* The AI makes moves based on conditional probability and knowledge of the dictionary. Using feedback from prior moves, it recursively eliminates entries and recalculates letter frequency. Here it is in action:
+
+![Hangman](gameplay.gif)
+
+* Users can override the AI and manually input a guess. Correct or not, the AI will continue to eliminate words accordingly.
+* Users have the option to play solo or with assistance from the AI.
+* Users can save and resume games in solo mode.
 
 ## Installation
 
-Ensure that Ruby is installed on your machine.
+1. Clone the repo: `$ git clone https://github.com/karafto/hangman-plus-ai.git`
+2. Move into the new directory: `$ cd hangman-plus-ai`
+3. To play: `$ ruby hangman.rb`
 
-Clone the repo: `$ git clone https://github.com/karafto/hangman-plus-ai.git`
+## Future Directions
 
-Move into the new directory: `$ cd hangman-plus-ai`
-
-To play: `$ ruby hangman.rb`
+* Ability to save games in AI mode
+* Two-player mode with scorekeeping
