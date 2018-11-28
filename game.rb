@@ -10,7 +10,6 @@ class Game
       @player = SoloPlayer.new(saved_game)
     else
       @player = AiPlayer.new(new_word.length, word_list)
-      @player.find_most_included_letter(@player.potential_matches)
     end
 
     @board = Board.new(saved_game, new_word)
@@ -20,8 +19,7 @@ class Game
     until @board.win? || @board.defeat?
       @board.display_board
       @board.display_bad_guesses
-      @player.get_guess(@board.displayed_letters, @board.guesses_left,
-        @board.correct_indices)
+      @player.get_guess(@board.displayed_letters, @board.correct_indices)
       check_save(@player.guess)
       @board.check_letter(@player.guess)
     end

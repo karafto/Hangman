@@ -9,7 +9,7 @@ class SoloPlayer
     end
   end
 
-  def get_guess(display_letters, guesses_left, correct_indices)
+  def get_guess(displayed_letters, correct_indices)
     loop do
       puts "Enter letter or 'quit' to save and quit:"
       @guess = gets.strip.upcase
