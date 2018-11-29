@@ -29,7 +29,7 @@ class AiPlayer
         @guess = @input
         break
       end
-      puts "\nTry again! Use a valid letter that has yet to be guessed."
+      puts "\nTry again! Use a valid letter that has yet to be guessed.\n\n"
     end
   end
 

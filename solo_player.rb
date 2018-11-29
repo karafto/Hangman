@@ -14,7 +14,7 @@ class SoloPlayer
       puts "Enter letter or 'quit' to save and quit:"
       @guess = gets.strip.upcase
       break if @alphabet.include?(@guess) || @guess == 'QUIT'
-      puts "\nTry again! Use a valid letter that has yet to be guessed."
+      puts "\nTry again! Use a valid letter that has yet to be guessed.\n\n"
     end
     @alphabet.delete(@guess)
   end
