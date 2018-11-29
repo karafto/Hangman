@@ -47,7 +47,7 @@ class Board
     if @displayed_letters == @correct_letters
       display_board
       puts '***** Congratulations, you win!! *****'
-      true
+      return true
     end
   end
   
@@ -55,7 +55,7 @@ class Board
     if @guesses_left == 0
       puts "\n***** Out of guesses, you lose!! *****
         \nTHE WORD was #{@correct_letters.join}"
-      true
+      return true
     end
   end
 end
