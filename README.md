@@ -11,8 +11,8 @@
 ![Hangman](gameplay.gif)
 
 * Users can override the AI and manually input a guess. Correct or not, the AI will continue to eliminate words accordingly.
-* Users have the option to play solo or with assistance from the AI.
-* Users can save and resume games in solo mode.
+* Users have the option to play solo or with support from the AI.
+* Users can save games upon shutdown and then resume them upon startup.
 
 ## Installation
 
@@ -22,5 +22,5 @@
 
 ## Future Directions
 
-* Ability to save games in AI mode
 * Two-player mode with scorekeeping
+* More advanced options for saving/loading
