@@ -2,20 +2,24 @@ class SoloPlayer
   attr_reader :guess, :alphabet
   
   def initialize(saved_game)
-    if saved_game
-      @alphabet = saved_game['alphabet']
-    else
-      @alphabet = ('A'..'Z').to_a
-    end
+    @alphabet =
+      if saved_game
+        saved_game['alphabet']
+      else
+        ('A'..'Z').to_a
+      end
   end
 
-  def get_guess(displayed_letters, correct_indices)
+  def get_guess
     loop do
       puts "Enter letter or 'quit' to save and quit:"
       @guess = gets.strip.upcase
       break if @alphabet.include?(@guess) || @guess == 'QUIT'
       puts "\nTry again! Use a valid letter that has yet to be guessed.\n\n"
     end
+  end
+
+  def eliminate_items(displayed_letters, correct_indices)
     @alphabet.delete(@guess)
   end
 end

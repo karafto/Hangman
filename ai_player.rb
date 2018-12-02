@@ -1,39 +1,37 @@
 class AiPlayer
-  attr_reader :guess
+  attr_reader :guess, :potential_matches, :letter_counts
   
-  def initialize(new_word_length, word_list)
-    @potential_matches = word_list.select do |word|
-      word.length == new_word_length
+  def initialize(saved_game, new_word_length, word_list)
+    if saved_game
+      @potential_matches = saved_game['potential_matches']
+      @letter_counts = saved_game['letter_counts']
+    else
+      @potential_matches = word_list.select do |word|
+        word.length == new_word_length
+      end
+      @potential_matches.each { |word| word.upcase! }
+      alphabet = ('A'..'Z').to_a
+      @letter_counts = {}
+      alphabet.each { |letter| @letter_counts[letter] = 0 }
     end
-    @potential_matches.each { |word| word.upcase! }
-    alphabet = ('A'..'Z').to_a
-    @letter_counts = {}
-    alphabet.each { |letter| @letter_counts[letter] = 0 }
-    @at_start = true
   end
 
-  def get_guess(displayed_letters, correct_indices)
-    unless @at_start
-      eliminate_words(displayed_letters, correct_indices)
-      @letter_counts.delete(@guess)
-    end
-    @at_start = false
-
-    @guess = find_most_included_letter(@potential_matches)
-
+  def get_guess
+    @letter_with_max_count = find_most_included_letter(@potential_matches)
     loop do
-      puts "Enter letter or press return for '#{@guess}':"
-      @input = gets.strip.upcase
-      break if @input.empty?
-      if @letter_counts.include?(@input)
-        @guess = @input
+      puts "Enter 'quit' to save and quit."
+      puts "Enter letter or press return for '#{@letter_with_max_count}':"
+      @guess = gets.strip.upcase
+      break if @letter_counts.include?(@guess) || @guess == 'QUIT'
+      if @guess.empty?
+        @guess = @letter_with_max_count
         break
       end
       puts "\nTry again! Use a valid letter that has yet to be guessed.\n\n"
     end
   end
 
-  def eliminate_words(displayed_letters, correct_indices)
+  def eliminate_items(displayed_letters, correct_indices)
     if displayed_letters.include?(@guess)
       correct_indices.each do |i|
         @potential_matches.delete_if { |word| word[i] != @guess }
@@ -41,6 +39,7 @@ class AiPlayer
     else
       @potential_matches.delete_if { |word| word.include?(@guess) }
     end
+    @letter_counts.delete(@guess)
   end
 
   def find_most_included_letter(potential_matches)
