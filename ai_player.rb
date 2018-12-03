@@ -43,8 +43,8 @@ class AiPlayer
   end
 
   def find_most_included_letter(potential_matches)
-    @letter_counts.each { |letter, count| @letter_counts[letter] = 0 }
     @letter_counts.each do |letter, count|
+      @letter_counts[letter] = 0
       potential_matches.each do |word|
         @letter_counts[letter] += 1 if word.include?(letter)
       end
