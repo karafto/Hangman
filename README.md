@@ -12,7 +12,7 @@
 
 * Users can override the AI and manually input a guess. Correct or not, the AI will continue to eliminate words accordingly.
 * Users have the option to play solo or with support from the AI.
-* Users can save games upon shutdown and then resume them upon startup.
+* Users can save games upon exiting and then resume them later.
 
 ## Installation
 
