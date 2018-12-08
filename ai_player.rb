@@ -22,9 +22,8 @@ class AiPlayer
       puts "Enter 'quit' to save and quit."
       puts "Enter letter or press return for '#{@letter_with_max_count}':"
       @guess = gets.strip.upcase
-      break if @letter_counts.include?(@guess) || @guess == 'QUIT'
-      if @guess.empty?
-        @guess = @letter_with_max_count
+      if @letter_counts.include?(@guess) || @guess == 'QUIT' || @guess.empty?
+        @guess = @letter_with_max_count if @guess.empty?
         break
       end
       puts "\nTry again! Use a valid letter that has yet to be guessed.\n\n"
