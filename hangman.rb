@@ -48,9 +48,9 @@ class Hangman
     until @board.win? || @board.defeat?
       @board.display_board
       @board.display_bad_guesses
-      @player.get_guess
-      save_and_quit if @player.guess == 'QUIT'
-      @board.check_letter(@player.guess)
+      guess = @player.get_guess
+      save_and_quit if guess == 'QUIT'
+      @board.check_letter(guess)
       @player.eliminate_items(@board.displayed_letters, @board.correct_indices)
     end
   end

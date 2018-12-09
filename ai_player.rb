@@ -1,5 +1,5 @@
 class AiPlayer
-  attr_reader :guess, :potential_matches, :letter_counts
+  attr_reader :potential_matches, :letter_counts
   
   def initialize(saved_game, new_word_length, word_list)
     if saved_game
@@ -24,7 +24,7 @@ class AiPlayer
       @guess = gets.strip.upcase
       if @letter_counts.include?(@guess) || @guess == 'QUIT' || @guess.empty?
         @guess = @letter_with_max_count if @guess.empty?
-        break
+        return @guess
       end
       puts "\nTry again! Use a valid letter that has yet to be guessed.\n\n"
     end

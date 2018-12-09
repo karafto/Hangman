@@ -1,5 +1,5 @@
 class SoloPlayer
-  attr_reader :guess, :alphabet
+  attr_reader :alphabet
   
   def initialize(saved_game)
     @alphabet =
@@ -14,7 +14,7 @@ class SoloPlayer
     loop do
       puts "Enter letter or 'quit' to save and quit:"
       @guess = gets.strip.upcase
-      break if @alphabet.include?(@guess) || @guess == 'QUIT'
+      return @guess if @alphabet.include?(@guess) || @guess == 'QUIT'
       puts "\nTry again! Use a valid letter that has yet to be guessed.\n\n"
     end
   end
