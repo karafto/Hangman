@@ -16,8 +16,8 @@
 
 ## Installation
 
-1. Clone the repo: `$ git clone https://github.com/karafto/hangman-plus-ai.git`
-2. Move into the new directory: `$ cd hangman-plus-ai`
+1. Clone the repo: `$ git clone https://github.com/karafto/hang-ai.git`
+2. Move into the new directory: `$ cd hang-ai`
 3. To play: `$ ruby hangman.rb`
 
 ## Future Directions
