@@ -6,7 +6,7 @@
 
 ## Features
 
-* The AI makes moves based on conditional probability and knowledge of the dictionary. Using feedback from prior moves, it recursively eliminates entries and recalculates letter frequency. Here it is in action:
+* The AI makes moves based on conditional probability and knowledge of the dictionary. Using feedback from prior moves, it repeatedly eliminates words and recalculates letter frequency. Here it is in action:
 
 ![Hangman](gameplay.gif)
 
