@@ -21,7 +21,7 @@ class AiPlayer
     loop do
       puts "Type 'quit' to save and quit."
       puts "AI's best guess is '#{@letter_with_max_count}'."
-      puts "Hit return for '#{@letter_with_max_count}', or enter your own guess:"
+      puts "Hit return for '#{@letter_with_max_count}', or input your own guess:"
       @guess = gets.strip.upcase
       if @letter_counts.include?(@guess) || @guess == 'QUIT' || @guess.empty?
         @guess = @letter_with_max_count if @guess.empty?
